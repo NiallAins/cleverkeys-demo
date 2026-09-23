@@ -1,0 +1,7 @@
+{
+    "name": "niallains/clever-keys",
+    "description": "Music website with keyboard app and shop",
+    "require": {
+        "stripe/stripe-php": "^7.66"
+    }
+}

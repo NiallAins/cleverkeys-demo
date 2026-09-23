@@ -1,0 +1,36 @@
+{
+  "products": {
+    "data": [
+      {
+        "id": "demo_00",
+        "description": "A book for music and such",
+        "images": [
+          "https://files.stripe.com/links/fl_test_Xb9UR1Qij3k7l4yeBzAUyy0B"
+        ],
+        "name": "CLEVER KEYS! Introduction"
+      },
+      {
+        "id": "demo_10",
+        "description": "Another book for music and such",
+        "images": [
+          "https://files.stripe.com/links/fl_test_Xb9UR1Qij3k7l4yeBzAUyy0B"
+        ],
+        "name": "CLEVER KEYS! Beginner"
+      }
+    ]
+  },
+  "prices": {
+    "data": [
+      {
+        "id": "demo_01",
+        "product": "demo_00",
+        "unit_amount": 3000
+      },
+      {
+        "id": "demo_11",
+        "product": "demo_10",
+        "unit_amount": 2000
+      }
+    ]
+  }
+}

@@ -1,0 +1,540 @@
+@import '../../vars.scss';
+$assets: '../../assets/';
+
+@function asset($name) {
+  @return url('../../assets/#{$name}');
+}
+
+.view-play {
+  .btn-back {
+    padding: 0 0 5px;
+    margin-left: -$p-sm;
+    margin-bottom: $p-lg;
+
+    span {
+      @include f-title;
+      line-height: 46px;
+    }
+  }
+
+  //
+  //  Buttons
+  //
+  .controls {
+    padding: $p-lg $p-xl;
+    @include f-title;
+
+    button {
+      @include f-title;
+      margin: 0 $p-sm;
+      padding: $p-sm;
+      width: 180px;
+
+      &.speed {
+        &.active {
+          $ani-dur: 0.3s;
+          position: relative;
+          z-index: 10;
+          text-align: center;
+          border: none;
+
+          &:hover {
+            box-shadow: none;
+          }
+
+          &:focus {
+            outline: none;
+          }
+
+          &:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            top: 0;
+            z-index: -10;
+            background-position: center;
+            background-repeat: no-repeat;
+            transition: opacity $ani-dur;
+            background-image: asset('nav_bg_2.png');
+          }
+        }
+      }
+    }
+
+    .play {
+      position: relative;
+      padding-left: 50px;
+      margin-right: $p-lg;
+
+      &:before {
+        content: '';
+        position: absolute;
+        left: $p-sm;
+        top: $p-sm;
+        border: 14px solid transparent;
+        border-left: 22px solid $c-font;
+      }
+
+      &.stop:before {
+        border: 10px solid $c-font;
+        left: #{$p-sm + 3px};
+        top: #{$p-sm + 3px};
+      }
+    }
+  }
+
+  //
+  //  Static elements
+  //
+  .applet-container {
+    width: 970px;
+    position: relative;
+    margin: 0 auto;
+
+    .staff-scroll-container {
+      position: relative;
+      overflow: hidden;
+      height: 474px;
+      margin: 10px 0 20px;
+    }
+
+    @keyframes caretblink {
+      0%    { opacity: 1; }
+      50%   { opacity: 1; }
+      100%  { opacity: 0; }
+    }
+
+    .caret {
+      position: absolute;
+      top: 5px;
+      z-index: 10;
+      height: 185px;
+      border-radius: 5px;
+      background: #0002;
+      transition:
+        opacity 0.2s,
+        left 0.2s;
+
+      &.blink {
+        animation: caretblink 0.6s infinite;
+
+        &.slow {
+          animation: caretblink 1.2s infinite;
+        }
+      }
+    }
+  }
+
+  //
+  //  Staff
+  //
+  $gap: 25px;
+  $weight: 2px;
+
+  .staff {
+    $staffBg:
+      // Final measure end
+      linear-gradient(#000 #{$gap * 4}, #0000 #{$gap * 4}) right bottom 212px / 6px 237px no-repeat,
+      linear-gradient(#000 #{$gap * 4}, #0000 #{$gap * 4}) right 10px bottom 212px / 3px 237px no-repeat,
+
+      // Hide last staff
+      linear-gradient(to top, #fff 0px, #fff 268px, #0000 268px) no-repeat,
+
+      // Clef
+      asset('clef.svg') -28px -8px repeat-y,
+      asset('timeFour.svg') 10px -98px / 406px no-repeat,
+
+      // Staff Lines
+      linear-gradient(
+        #0000 #{$gap * 0}, black #{$gap * 0}, black #{($gap * 0) + $weight}, #0000 #{($gap * 0) + $weight},
+        #0000 #{$gap * 1}, black #{$gap * 1}, black #{($gap * 1) + $weight}, #0000 #{($gap * 1) + $weight},
+        #0000 #{$gap * 2}, black #{$gap * 2}, black #{($gap * 2) + $weight}, #0000 #{($gap * 2) + $weight},
+        #0000 #{$gap * 3}, black #{$gap * 3}, black #{($gap * 3) + $weight}, #0000 #{($gap * 3) + $weight},
+        #0000 #{$gap * 4}, black #{$gap * 4}, black #{($gap * 4) + $weight}, #0000 #{($gap * 4) + $weight}
+      ) 0 40px / 450px 237px,
+
+      // Cover vertical lines between staff rows
+      linear-gradient(
+        #0000 0px,
+        #0000 #{$gap * 4},
+        #fff #{$gap * 4}
+      ) 200px 40px / 450px 237px,
+
+      // Measure lines
+      linear-gradient(
+        to right,
+        #0000 0px,
+        #0000 #{400px - $weight},
+        black #{400px - $weight}
+      ) 170px -10px / 400px no-repeat,
+      linear-gradient(
+        to right,
+        #0000 0px,
+        #0000 #{400px - $weight},
+        black #{400px - $weight}
+      ) 570px -10px / 424px no-repeat;
+
+    width: 820px;
+    padding: 40px 0 212px 150px;
+    overflow: hidden;
+    background: $staffBg, asset('timeFour.svg') 10px -148px / 406px no-repeat;
+
+    &.threeFour {
+      background: $staffBg, asset('timeThree.svg') 20px -80px / 395px no-repeat;
+    }
+  }
+
+  //
+  //  Notes sizes
+  //
+  .note-container {
+    float: left;
+    position: relative;
+    z-index: 20;
+    width: 100px;
+    height: 237px;
+
+    &.eighth {
+      width: 50px;
+      transform: translateX(-22px);
+
+      .text {
+        right: -50%;
+      }
+    }
+
+    &.half {
+      width: 200px;
+
+      &.dotted {
+        width: 300px;
+      }
+    }
+
+    &.whole {
+      width: 400px;
+    }
+  }
+
+  .staff.threeFour .note-container {
+    width: 133px;
+
+    &.eighth {
+      width: 66px;
+    }
+
+    &.half {
+      width: 266px;
+
+      &.dotted {
+        width: 400px;
+      }
+    }
+
+    &.whole {
+      width: 533px;
+    }
+  }
+
+  //
+  //  Note graphics
+  //
+  .note-container {
+    .note {
+      position: absolute;
+      left: 50px;
+    }
+
+    &.C, &.Cs { .note { top: #{($gap * 4.5) + 2px}; }}
+    &.D, &.Ds { .note { top: #{($gap * 4.0) + 2px}; }}
+    &.E       { .note { top: #{($gap * 3.5) + 2px}; }}
+    &.F, &.Fs { .note { top: #{($gap * 3.0) + 2px}; }}
+    &.G, &.Gs { .note { top: #{($gap * 2.5) + 2px}; }}
+    &.A, &.As { .note { top: #{($gap * 2.0) + 2px}; }}
+    &.B       { .note { top: #{($gap * 1.5) + 2px}; }}
+    &.C.active  .note-body { border-color: $c-C;  background: $c-C;  }
+    &.Cs.active .note-body { border-color: $c-Cs; background: $c-Cs; }
+    &.D.active  .note-body { border-color: $c-D;  background: $c-D;  }
+    &.Ds.active .note-body { border-color: $c-Ds; background: $c-Ds; }
+    &.E.active  .note-body { border-color: $c-E;  background: $c-E;  }
+    &.F.active  .note-body { border-color: $c-F;  background: $c-F;  }
+    &.Fs.active .note-body { border-color: $c-Fs; background: $c-Fs; }
+    &.G.active  .note-body { border-color: $c-G;  background: $c-G;  }
+    &.Gs.active .note-body { border-color: $c-Gs; background: $c-Gs; }
+    &.A.active  .note-body { border-color: $c-A;  background: $c-A;  }
+    &.As.active .note-body { border-color: $c-As; background: $c-As; }
+    &.B.active  .note-body { border-color: $c-B;  background: $c-B;  }
+
+    .note-body {
+      $border-w: 3px;
+      padding: #{($gap / 2) - ($weight / 2) - $border-w};
+      border: 1px solid black;
+      border-width: $border-w #{$border-w * 3};
+      border-radius: 100%;
+      transform: rotate(-20deg);
+      background: black;
+      box-shadow: 0 0 0 1px black;
+      transition:
+        border-color 0.2s,
+        background-color 0.2s;
+    }
+
+    &.half,
+    &.whole {
+      .note-body,
+      &.active .note-body {
+        background: transparent;
+        box-shadow:
+          0 0 0 1px black,
+          0 0 0 1px black inset;
+      }
+    }
+
+    .note-stem {
+      position: absolute;
+      right: 1px;
+      bottom: #{$gap / 2};
+      width: 2px;
+      height: $gap * 2.75;
+      background: black;
+    }
+
+    &.whole .note-stem {
+      background: transparent;
+    }
+
+    &.eighth + .eighth .note-stem:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 52px;
+      height: 20px;
+      background: black;
+    }
+
+    &.dotted .note-body:after {
+      content: '';
+      position: absolute;
+      right: -30px;
+      bottom: -5px;
+      padding: 5px;
+      border-radius: 100%;
+      background-color: black;
+    }
+
+    &.C, &.Cs {
+      .note-stem:before {
+        content: '';
+        position: absolute;
+        right: -10px;
+        bottom: -2px;
+        width: 54px;
+        height: $weight;
+        background: black;
+      }
+    }
+  }
+
+  //
+  //  Rests
+  //
+  .note-container.R {
+    .note-body,
+    .note-stem {
+      display: none;
+    }
+
+    &:not(.half):not(.whole) .note {
+      width: 100px;
+      height: 100px;
+      background: asset('rest.svg') no-repeat 0 #{$gap * 0.7};
+    }
+
+    &.half, &.whole {
+      .note:after {
+        content: '';
+        position: absolute;
+        left: 0;
+        width: 36px;
+        height: 14px;
+        background: black;
+      }
+
+      &.dotted .note {
+        width: 300px;
+
+        &:before {
+          content: '';
+          position: absolute;
+          top: 34px;
+          left: 55px;
+          padding: 5px;
+          border-radius: 100%;
+          background: black;
+        }
+      }
+    }
+
+    &.half .note {
+      width: 200px;
+
+      &:after {
+        top: 38px;
+      }
+    }
+
+    &.whole .note {
+      width: 400px;
+
+      &:after {
+        top: 26px;
+      }
+    }
+  }
+
+  // Text
+  .note-container {
+    .text {
+      position: absolute;
+      left: 15px;
+      bottom: 50px;
+      width: 100px;
+      font-size: $f-size-xl;
+      text-align: center;
+    }
+
+    .dash {
+      position: absolute;
+      bottom: 50px;
+      right: 0;
+      font-weight: bold;
+    }
+  }
+
+  //
+  //  Keyboard
+  //
+  .board-container {
+    text-align: center;
+    padding-top: 30px;
+  }
+
+  .board {
+    display: inline-block;
+    white-space: nowrap;
+    text-align: center;
+
+    .key {
+      position: relative;
+      float: left;
+      width: 56px;
+      height: 170px;
+      border: 1px solid black;
+      border-radius: 0 0 3px 3px;
+      margin-left: -1px;
+      text-align: center;
+      transition: background-color 0.1s;
+
+      &:first-child {
+        margin-left: 0;
+      }
+
+      &.sharp {
+        z-index: 10;
+        width: 40px;
+        height: 90px;
+        margin: 0 -21px;
+        color: white;
+        background-color: $c-bg;
+      }
+
+      span {
+        position: absolute;
+        bottom: 10px;
+        left: 0;
+        right: 0;
+        font-family: $f-title;
+        font-weight: bold;
+        font-size: $f-size-xl;
+      }
+
+      &.A.active        { background-color: $c-A;  }
+      &.A.sharp.active  { background-color: $c-As; }
+      &.B.active        { background-color: $c-B;  }
+      &.C.active        { background-color: $c-C;  }
+      &.C.sharp.active  { background-color: $c-Cs; }
+      &.D.active        { background-color: $c-D;  }
+      &.D.sharp.active  { background-color: $c-Ds; }
+      &.E.active        { background-color: $c-E;  }
+      &.F.active        { background-color: $c-F;  }
+      &.F.sharp.active  { background-color: $c-Fs; }
+      &.G.active        { background-color: $c-G;  }
+      &.G.sharp.active  { background-color: $c-Gs; }
+
+      &.C:not(.sharp):not(:first-child):not(:last-child) {
+        position: relative;
+
+        &:before {
+          content: '';
+          position: absolute;
+          left: calc(50% - 4px);
+          bottom: -18px;
+          padding: 5px;
+          border: solid $c-font;
+          border-width: 2px 0 0 2px;
+          transform: rotate(45deg);
+        }
+
+        &:after {
+          content: 'Middle C';
+          height: 8px;
+          width: 0;
+          padding: 10px 0 5px 22px;
+          border: solid $c-font;
+          border-width: 0 0 0 3px;
+          border-bottom-left-radius: 100px;
+          position: absolute;
+          bottom: -29px;
+          left: 50%;
+          color: $c-font;
+          font-family: $f-title;
+          font-size: $f-size-xl;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 1040px) {
+    padding-right: $p-xs;
+    padding-left: $p-xs;
+
+    h1, .btn-back, p {
+      margin-left: 10px;
+    }
+  }
+
+  @media (max-width: 850px) {
+    p {
+      margin-bottom: $p-md;
+    }
+
+    .controls {
+      padding: 0;
+
+      .label-speed {
+        display: block;
+        margin: $p-sm;
+      }
+
+      button {
+        max-width: 40%;
+        margin-bottom: $p-md;
+        font-size: $f-size;
+      }
+    }
+  }
+}

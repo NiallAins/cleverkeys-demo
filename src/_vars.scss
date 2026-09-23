@@ -1,0 +1,89 @@
+$c-font: #333;
+$c-bg: #222;
+$c-border: #ccc;;
+$c-bg-disabled: #eee;
+$c-hover: #70a4fc;
+
+$c-active-1: #d91c0b;
+$c-active-2: #f9ec53;
+$c-active-3: #9afb4d;
+$c-active-4: #48a1f9;
+$c-active-5: #a871e1;
+$c-active-6: #fd8f46;
+$c-active-7: #fd46b1;
+$c-active-1-l: lighten($c-active-1, 10%);
+$c-active-2-l: lighten($c-active-2, 10%);
+$c-active-3-l: lighten($c-active-3, 10%);
+$c-active-4-l: lighten($c-active-4, 10%);
+$c-active-5-l: lighten($c-active-5, 10%);
+$c-active-6-l: lighten($c-active-6, 10%);
+$c-active-7-l: lighten($c-active-7, 10%);
+$c-active-1-d:  darken($c-active-1, 10%);
+$c-active-2-d:  darken($c-active-2, 10%);
+$c-active-3-d:  darken($c-active-3, 15%);
+$c-active-4-d:  darken($c-active-4, 15%);
+$c-active-5-d:  darken($c-active-5, 15%);
+$c-active-6-d:  darken($c-active-6, 15%);
+$c-active-7-d:  darken($c-active-7, 15%);
+
+$c-C:  $c-active-1-l;
+$c-Cs: $c-active-1-d;
+$c-D:  $c-active-2-l;
+$c-Ds: $c-active-2-d;
+$c-E:  $c-active-3-l;
+$c-F:  $c-active-4-l;
+$c-Fs: $c-active-4-d;
+$c-G:  $c-active-5-l;
+$c-Gs: $c-active-5-d;
+$c-A:  $c-active-6-l;
+$c-As: $c-active-6-d;
+$c-B:  $c-active-7-l;
+
+$f-prim: 'Roboto', sans-serif;
+$f-title: 'Gloria Hallelujah', cursive;
+$f-size-sm: 14px;
+$f-size: 16px;
+$f-size-lg: 18px;
+$f-size-xl: 20px;
+$f-size-title-sm: 20px;
+$f-size-title: 24px;
+$f-height: 26px;
+$f-weight: 500;
+$f-weight-bold: 700;
+
+$l-ani: 0.3s;
+$l-splash: 2.5s;
+
+$w-max: 1080px;
+$w-mob: 800px;
+$w-br: 4px;
+
+$p-xs: 6px;
+$p-sm: 12px;
+$p-md: 24px;
+$p-lg: 32px;
+$p-xl: 48px;
+$p-xxl: 64px;
+
+@mixin f-body {
+  line-height: $f-height;
+  font-size: $f-size;
+  font-weight: $f-weight;
+  font-family: $f-prim;
+  color: $c-font;
+}
+@mixin f-large {
+  @include f-body;
+  font-size: $f-size-lg;
+}
+@mixin f-larger {
+  @include f-body;
+  font-size: $f-size-xl;
+
+}
+@mixin f-title {
+  @include f-body;
+  font-size: $f-size-title;
+  font-weight: $f-weight-bold;
+  font-family: $f-title;
+}
