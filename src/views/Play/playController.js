@@ -125,7 +125,7 @@ export default {
       });
     },
     playSong() {
-      this.audio.playbackRate = this.beatDuration / this.bpm;
+      this.audio.playbackRate = this.bpm / this.beatDuration;
       this.playing = true;
       // Count in
       this.timeouts.push(setTimeout(

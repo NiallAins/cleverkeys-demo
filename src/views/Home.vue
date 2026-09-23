@@ -66,7 +66,7 @@
         </h2>
         <p class="text">
           <span v-html="text.schoolDesc"></span>
-          <div class="btns">
+          <span class="btns">
             <router-link
               to="/schools"
               tag="button"
@@ -75,7 +75,7 @@
             >
               {{ text.schoolBtn }}
             </router-link>
-          </div>
+          </span>
         </p>
       </article>
 
@@ -85,7 +85,7 @@
         </h2>
         <p class="text">
           <span v-html="text.shopDesc"></span>
-          <div class="btns">
+          <span class="btns">
             <router-link
               to="/shop"
               tag="button"
@@ -94,7 +94,7 @@
             >
               {{ text.shopBtn }}
             </router-link>
-          </div>
+          </span>
         </p>
       </article>
     </div>
@@ -127,6 +127,7 @@
       }
 
       .btns {
+        display: block;
         padding: $p-sm 0;
         width: 100%;
         margin: 0 auto;

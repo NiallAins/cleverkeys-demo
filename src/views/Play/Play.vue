@@ -46,6 +46,7 @@
         <div :class="['staff', { 'threeFour': timeSig === 3 }]">
           <div
             v-for="note in song"
+            :key="note.n"
             :class="[
               'note-container', 
               note.note,
@@ -75,6 +76,7 @@
         <div class="board">
           <div
             v-for="key in keys"
+            :key="key.note"
             :class="[
               'key',
               key.note,
