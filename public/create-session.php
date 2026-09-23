@@ -18,7 +18,7 @@ $products = array_map(
   explode(' ', $_GET['quantity'])
 );
 
-$DOMAIN = 'https://niallains.github.io/public/';
+$DOMAIN = 'https://niallains.github.io/dist/';
 $checkout_session = \Stripe\Checkout\Session::create([
   'payment_method_types' => ['card'],
   'shipping_address_collection' => [

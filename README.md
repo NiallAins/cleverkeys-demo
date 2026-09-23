@@ -5,7 +5,7 @@ A public demo version of the CleverKeys app
 ## Dev
 
 ### Init:
-  - Requires NODE, PHP7, Composer
+  - Requires Node, PHP7, Composer
   - `git pull`
   - `npm install`
   - `composer install`

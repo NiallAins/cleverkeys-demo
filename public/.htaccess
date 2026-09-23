@@ -11,4 +11,4 @@ RewriteEngine On
 RewriteCond %{HTTPS} off 
 RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-ErrorDocument 404 https://niallains.github.io/public//#/
+ErrorDocument 404 https://niallains.github.io/dist//#/
