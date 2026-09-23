@@ -85,7 +85,7 @@
     "shop": {
       "title": "Shop",
       "intro": "",
-      "loading": "Loading items...",
+      "loading": "Demo app - Stripe storefront inactive",
       "total": "Total:",
       "btnCheckout": "Checkout",
       "success": "Your order was successful, thank you for your purchase!<br/>If you need to update your order, please let us know on our <a href=\"../#/contact\">contact page</a>.",
@@ -97,7 +97,7 @@
       "labelName": "Name",
       "labelMail": "Email or Phone number",
       "labelMessage": "Your Message",
-      "btnSend": "Send",
+      "btnSend": "Demo app - Contact inactive",
       "messageSuccess": "Thank you for getting in touch with <b>CLEVER KEYS!</b><br/>A member of our team will be in touch with you shortly to discuss your enquiry.",
       "messageFail": "Your message has <strong>not</strong> been sent. Please try again later, or use one of the other contact methods listed above."
     }

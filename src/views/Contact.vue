@@ -37,8 +37,7 @@
 
       <button
         class="primary c-contact"
-        :disabled="!canSend || !values.name || !values.mail || !values.message"
-        type="submit"
+        :disabled="true"
       >
         {{ text.btnSend }}
       </button>
