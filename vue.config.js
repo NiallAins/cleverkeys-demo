@@ -1,0 +1,1 @@
+module.exports = { publicPath: 'https://niallains.github.io/cleverkeys-demo/dist/' };
